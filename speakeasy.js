@@ -27,6 +27,7 @@ var jsonParser = require("body-parser").json;
     res.json({response: "You sent me a GET request to the daniel speakeasy page"});
 }); */
 
+//This route seems to work fine.
 router.get("/", function(req, res, next) {
     DrinkRating.find({}, function (err, DrinkRating) {
         if (err) return next (err);
@@ -36,6 +37,7 @@ router.get("/", function(req, res, next) {
 
 //POST /speakeasy
 //Route for voting on speakeasy drinks and commenting
+//No problems with this route
 /* router.post("/", function(req, res) {
     res.json({
         response: "You sent me a POST request on the daniel speakeasy page",
@@ -46,6 +48,7 @@ router.get("/", function(req, res, next) {
     });
 }); */
 
+//This route seems to work fine
 router.post("/", function(req, res, next) {
     var drinkRating = new DrinkRating(req.body);
     drinkRating.save(function(err, drinkRating) {
@@ -63,8 +66,8 @@ router.post("/", function(req, res, next) {
 }); */
 
 //when I try this route on Postman I get a 500 Internal Server Error
-router.get("/:id", function(req, res, next) {
-    DrinkRating.findById(req.params.id, function (err, doc) {
+router.get("/:vID", function(req, res, next) {
+    DrinkRating.findById(req.params.vID, function (err, doc) {
         if (err) return next (err);
         res.json(doc);
     });
@@ -78,24 +81,26 @@ router.get("/:id", function(req, res, next) {
 
 //PUT /speakeasy/:vID
 //Edit a specific comment
-/* router.put("/:vID", function (req, res) {
+//This route WORKS!!!
+router.put("/:vID", function (req, res) {
     res.json({
-        response: "You sent me a PUT request for ID " + req.params.id,
-        commentId: req.params.id,
+        response: "You sent me a PUT request for ID " + req.params.vID,
+        commentId: req.params.vID,
         body: req.body
     });
-}); */
+});
 
-router.put("/:id", function (req, res) {
+/* router.put("/:vID", function (req, res) {
     req.answer.update(req.body, function (err, result){
         if (err) return next (err);
         res.json(result);
     });
-});
+}); */
 
 //DELETE /speakeasy/:vID
 //Delete a specific comment
-router.delete("/:id", function (req, res) {
+//ERROR MESSAGE - cannot read property 'remove' of undefined
+router.delete("/:vID", function (req, res) {
     req.answer.remove(function (err) {
         req.DrinkRating.save(function (err, DrinkRating) {
             if (err) return next (err);
@@ -104,11 +109,12 @@ router.delete("/:id", function (req, res) {
     });
 });
 
+//This route WORKS!!!
 /* router.delete("/:vID", function (req, res) {
     res.json({
-        response: "You sent me a DELETE request for ID " + req.params.id,
-        commentId: req.params.id
+        response: "You sent me a DELETE request for ID " + req.params.vID,
+        commentId: req.params.vID
     });
-}); */ 
+}); */
 
 module.exports = router;

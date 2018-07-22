@@ -2,20 +2,37 @@
 
 'use strict';
 
-var express = require("express");
-var app = express();
-var config = require("./config");
+const express = require("express");
+const path = require("path");
+const jsonParser = require("body-parser").json;
+const config = require("./config");
+const speakeasyRoutes = require("./routes/speakeasy-practice");
+const logger = require("morgan");
 
-var jsonParser = require("body-parser").json;
-var logger = require("morgan");
+//require mongoose
+const mongoose = require("mongoose");
 
-app.use(logger("dev"));
-app.use(jsonParser());
-
-var mongoose = require("mongoose");
 var db = mongoose.connection;
 
-mongoose.connect("mongodb://localhost:27017/qa");
+//connect to mongo database through mongoose
+mongoose.connect("mongodb://localhost:27017/drinkpractice");
+
+//import models
+const Drinks = require("./models").Drinks;
+
+const app = express();
+const publicPath = path.resolve(__dirname, '../public');
+app.use(jsonParser());
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.use(express.static(publicPath));
+
+app.use(logger("dev"));
+//app.set('view engine', 'pug');
+
+app.use("/speakeasy-practice", speakeasyRoutes);
 
 db.on("error", function(err){
     console.error("connection error:", err);
@@ -25,13 +42,9 @@ db.once("open", function () {
     console.log("db connection successful");
 });
 
-var index = require("./routes/index");
-var questions = require("./routes/questions");
-var speakeasy = require("./routes/speakeasy");
-
-app.use("/", index);
-app.use("/questions", questions);
-app.use("/speakeasy", speakeasy);
+app.get("/", (req, res) => {
+    res.render('speakeasy-practice');
+});
 
 //catch 404 and forward to error handler
 app.use(function (req, res, next) {

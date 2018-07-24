@@ -6,15 +6,15 @@
         "comments": "great overall drink! Loved it! Could taste the whiskey, sugar, and bitters and it had a smooth, smoky aftertaste."
     },
     {
-        name: "gin rickey",
-        description: "a classic highball drink made from gin, with lime and carbonated water",
-        rate: 4,
-        comments: "a nice, refreshing drink. A little too much gin"
+        "name": "gin rickey",
+        "description": "a classic highball drink made from gin, with lime and carbonated water",
+        "rate": 4,
+        "comments": "a nice, refreshing drink. A little too much gin"
     },
     {
-        name: "bees knees",
-        description: "a gin cocktail that is truly the bees knees",
-        rate: 5,
-        comments: "this drink was AWESOME! It was truly the bees knees"
+        "name": "bees knees",
+        "description": "a gin cocktail that is truly the bees knees",
+        "rate": 5,
+        "comments": "this drink was AWESOME! It was truly the bees knees"
     }
 ]

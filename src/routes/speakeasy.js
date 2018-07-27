@@ -1,4 +1,4 @@
-// src/routes/speakeasy-practice.js
+// src/routes/speakeasy.js
 
 const express = require("express");
 const router = express.Router();

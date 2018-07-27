@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Daniel Speakeasy Project Using Full-Stack JavaScript</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="speakeasy.css">
+    <link href="https://fonts.googleapis.com/css?family=Limelight|Sacramento" rel="stylesheet">
+  </head>
+  
+  <body>
+    <div class="container">
+      <h1>Speakeasy Drink Library</h1>
+  
+      <div id="list-container"></div>
+      <!-- <button id="add-file-button" class="btn btn-primary" onclick="handleAddFileClick()">Add Drink</button> -->
+
+      <div id="form-container" class="panel">
+        <form id="add-drink-form">
+          <input type="hidden" id="drink-id" value="" />
+            
+            <legend id="form-label">Drinks</legend>
+          <div class="form-group">
+            <label for="drink-name">Name</label>
+            <input type="text" class="form-control" id="drink-name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="drink-description">Description</label>
+            <input type="text" class="form-control" id="drink-description" placeholder="Description">
+          </div>
+            <div class="form-group">
+            <label for="drink-rate">Rate</label>
+            <input type="text" class="form-control" id="drink-rate" placeholder="Rate - 1 to 5 scale">
+          </div>
+          <div class="form-group">
+            <label for="drink-comments">Comments</label>
+            <input type="text" class="form-control" id="drink-comments" placeholder="Comments">
+          </div>
+        
+        
+        <!-- <button id="add-file-button" class="btn btn-primary" onclick="handleAddFileClick()">Add Drink</button> -->
+        <button type="button" onclick="submitFileForm()" class="btn btn-success">Submit</button>
+          <button type="button" onclick="cancelFileForm()" class="btn btn-link">cancel</button>
+        </form>
+      </div>
+    </div>
+      
+    <!-- <script id="list-template" type="text/x-handlebars-template">
+      <ul class="list-group">
+        {{#each files}}
+        <li class="list-group-item">
+          <strong>{{title}}</strong> - {{description}}
+          <span class="pull-right">
+            <button type="button" class="btn btn-xs btn-default" onclick="handleEditFileClick('{{_id}}')">Edit</button>
+            <button type="button" class="btn btn-xs btn-danger" onclick="handleDeleteFileClick('{{_id}}')">Del</button>
+          </span>
+        </li>
+        {{/each}}
+      </ul>
+    </script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script> -->
+    <script src="js/app.js" type="text/javascript"></script>
+  
+    <script>
+      $(document).ready(function () {
+        refreshFileList();
+        setForm();
+      });
+    </script>
+  
+  </body>
+</html>

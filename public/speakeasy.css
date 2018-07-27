@@ -1,0 +1,33 @@
+body {
+    background-color: lightgray;
+}
+
+label {
+    font-family: 'Limelight';
+    color: darkgoldenrod;
+}
+
+h1 {
+    font-family: 'Limelight';
+    color: darkgoldenrod;
+    text-align: center;
+}
+
+form {
+    font-family: 'Limelight';
+    color: darkgoldenrod;
+}
+
+div {
+    font-family: 'Limelight';
+    color: darkgray;
+}
+
+strong {
+    font-family: 'Limelight';
+    color: darkgoldenrod;
+}
+
+#placeholder {
+    font-family: 'Limelight';
+}
